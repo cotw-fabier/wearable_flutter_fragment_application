@@ -4,6 +4,9 @@ import androidx.fragment.app.FragmentActivity
 import hu.popoapps.wearable_flutter_fragment_application.data.DismissibleApplicationConfiguration
 import hu.popoapps.wearable_flutter_fragment_application.core.DismissibleApplicationConfigurator
 import hu.popoapps.wearable_flutter_fragment_application.layout.DismissibleLayout
+import com.ryanheise.audioservice.AudioServicePlugin
+import io.flutter.embedding.engine.FlutterEngine
+
 
 /**
  * Inheriting from this class is necessary to use the plugin.
@@ -29,6 +32,8 @@ open class WearableCoreFragmentActivity : FragmentActivity() {
             context = this
         )
     }
+
+    
 
     /**
      * It can be used on the onCreate method of the descendants.

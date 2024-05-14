@@ -6,6 +6,7 @@ import io.flutter.embedding.android.FlutterFragment
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.FlutterEngineCache
 import io.flutter.embedding.engine.dart.DartExecutor
+import com.ryanheise.audioservice.AudioServicePlugin
 
 /**
  * It builds properties by the provided parameters that can be used by the plugin
@@ -27,7 +28,7 @@ data class FlutterComponentsProvider(
     ) : this(
         flutterEngineTag,
         flutterFragmentTag,
-        flutterEngine ?: FlutterEngine(context).apply {
+        flutterEngine ?: AudioServicePlugin.getFlutterEngine(context).apply {
             entrypoint ?: dartExecutor.executeDartEntrypoint(DartExecutor.DartEntrypoint.createDefault())
             FlutterEngineCache.getInstance().put(flutterEngineTag, this)
         }
@@ -48,7 +49,7 @@ data class FlutterComponentsProvider(
     ) : this(
         flutterEngineTag,
         flutterFragmentTag,
-        flutterEngine ?: FlutterEngine(context).apply {
+        flutterEngine ?: AudioServicePlugin.getFlutterEngine(context).apply {
             dartExecutor.executeDartEntrypoint(DartExecutor.DartEntrypoint("flutter_assets", entrypointName))
             FlutterEngineCache.getInstance().put(flutterEngineTag, this)
         }
